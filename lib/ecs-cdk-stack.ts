@@ -41,7 +41,7 @@ export class EcsCdkStack extends cdk.Stack {
     const vpc = new ec2.Vpc(this, 'ecs-cdk-vpc', {
       ipAddresses: ec2.IpAddresses.cidr('10.0.0.0/16'),
       natGateways: 1,
-      maxAzs: 1
+      maxAzs: 3
     });
 
     const clusteradmin = new iam.Role(this, 'adminrole', {
@@ -185,7 +185,7 @@ export class EcsCdkStack extends cdk.Stack {
           },
           build: {
             commands: [
-              'cd node-app',
+              'cd ../node-app',
               'echo "Building Docker Image"',
               `docker build -t $ECR_REPO_URI:$TAG .`,
               'echo "Tagging Docker Image" ',
