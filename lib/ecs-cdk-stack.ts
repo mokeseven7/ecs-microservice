@@ -87,7 +87,7 @@ export class EcsCdkStack extends cdk.Stack {
     /**
      * The base image thats used to construct a container based on the dockerfile in the node-app directory
      */
-    const baseImage = 'public.ecr.aws/lts/ubuntu:latest'
+    const baseImage = 'public.ecr.aws/j6m9z6k9/express-app:latest'
     const container = taskDef.addContainer('node-app', {
       image: ecs.ContainerImage.fromRegistry(baseImage),
       memoryLimitMiB: 256,
