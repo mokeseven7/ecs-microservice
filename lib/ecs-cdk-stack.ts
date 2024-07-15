@@ -96,7 +96,7 @@ export class EcsCdkStack extends cdk.Stack {
     });
 
     container.addPortMappings({
-      containerPort: 5000,
+      containerPort: 3000,
       protocol: ecs.Protocol.TCP
     });
 
@@ -185,9 +185,9 @@ export class EcsCdkStack extends cdk.Stack {
           },
           build: {
             commands: [
-              'cd ../node-app',
+              'cd node-app',
               'echo "Building Docker Image"',
-              `docker build -t $ECR_REPO_URI:$TAG .`,
+              `docker build -p 3000:3000 -t $ECR_REPO_URI:$TAG .`,
               'echo "Tagging Docker Image" ',
             ]
           },
